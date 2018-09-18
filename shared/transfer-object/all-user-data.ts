@@ -1,9 +1,9 @@
-import { Participant } from "../model/participant";
-import { Thread } from "../model/thread";
-import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import {Participant} from "../model/participant";
+import {Thread} from "../model/thread";
+import {Message} from "../model/message";
 
-export interface AllUserData{
-	participants: Participant[];
-	threads: Thread[];
-	messages: Message[];
+export interface AllUserData {
+    participants: Participant[];
+    threads: Thread[];
+    messages: Message[];
 }
