@@ -1,12 +1,10 @@
-import {dbThreads} from "../db-data";
+var { dbThreads } = require('../db-data');
 import {Thread} from "../../../shared/model/thread";
-import * as _ from 'lodash';
+var _ = require('lodash');
+module.exports = {
+ 	findThreadById: function(threadId:number) {
 
-
-
-export function findThreadById(threadId:number) {
-
-    const threads: Thread[] = <any> _.values(dbThreads);
-
-    return _.find(threads,thread => thread.id === threadId);
+		const threads: Thread[] = <any> _.values(dbThreads);
+		return _.find(threads,thread => thread.id === threadId);
+	}
 }

@@ -1,10 +1,8 @@
-
 import {Participant} from "../../shared/model/participant";
 import {Thread} from "../../shared/model/thread";
 import {Message} from "../../shared/model/message";
 
-
-export const dbParticipants: {[key: number]: Participant} = {
+const dbParticipants: {[key: number]: Participant} = {
     1: {
         id: 1,
         name: 'Alice'
@@ -28,7 +26,7 @@ export const dbParticipants: {[key: number]: Participant} = {
 };
 
 
-export const dbThreads: {[key: number]: Thread} = {
+const dbThreads: {[key: number]: Thread} = {
     1: {
         id: 1,
         messageIds: [1, 2, 3, 4, 5],
@@ -60,7 +58,7 @@ export const dbThreads: {[key: number]: Thread} = {
 };
 
 
-export const dbMessages: {[key: number]: Message} = {
+const dbMessages: {[key: number]: Message} = {
 
     1: {
         id: 1,
@@ -183,7 +181,7 @@ export const dbMessages: {[key: number]: Message} = {
 };
 
 
-export const dbMessagesQueuePerUser: {[key: number]: number[]} = {
+const dbMessagesQueuePerUser: {[key: number]: number[]} = {
 
     1: [],
     2: [],
@@ -194,15 +192,10 @@ export const dbMessagesQueuePerUser: {[key: number]: number[]} = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
+module.exports = {
+	dbParticipants,
+	dbMessages,
+	dbMessagesQueuePerUser,
+	dbThreads,
+}
 

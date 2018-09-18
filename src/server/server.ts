@@ -1,16 +1,23 @@
-import * as express from 'express'
-import {Application} from 'express';
+const express = require('express');
+const http = require('http');
+const bodyParser = require('body-parser');
 
-import {apiGetUserThreads} from "./api/apiGetUserThreads";
-import * as bodyParser from 'body-parser';
+var { apiGetUserThreads } = require('./api/apiGetUserThreads' );
+var { apiUpdateThread } = require( './api/apiMarkThreadAsReadByUser' );
+var { apiMessageNotificationsPerUser } = require('./api/apiMessageNotificationsPerUser' );
+var { apiSaveNewMessage } = require('./api/apiSaveNewMessage' );
 
-const app: Application = express();
+const app = express();
 
-app.use(bodyParser.json());
+const port = process.env.PORT || 3001;
 
-apiGetUserThreads(app);
+app.use( bodyParser.json());
 
+apiGetUserThreads( app );
+apiUpdateThread( app );
+apiMessageNotificationsPerUser( app );
+apiSaveNewMessage( app );
 
-app.listen(8090, () => {
-    console.log('Server is now running on port 8090 ...');
+app.listen( port, () => {
+	console.log(`Server is running on port 3001`)
 });

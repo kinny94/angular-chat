@@ -1,14 +1,15 @@
 import {Thread} from "../../../shared/model/thread";
-import {dbThreads} from "../db-data";
-import * as _ from 'lodash';
+var { dbThreads } = require('../db-data');
+var _ = require('lodash');
 
-export function findDbThreadsPerUser(participantId:number) {
+module.exports = {
+	findDbThreadsPerUser: function(participantId:number) {
 
-    const allThreads: Thread[] = _.values<Thread>(dbThreads);
+		const allThreads: Thread[] = _.values(dbThreads);
 
 
-    return _.filter(allThreads, thread =>
-        _.includes( _.keys(thread.participants), participantId.toString() )
-    )
-
+		return _.filter(allThreads, thread =>
+			_.includes( _.keys(thread.participants), participantId.toString() )
+		)
+	}
 }
