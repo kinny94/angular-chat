@@ -1,5 +1,5 @@
 import {Application} from 'express';
-import * as _ from 'lodash';
+var _ = require('lodash');
 import {Message} from "../../../shared/model/message";
 var { dbMessages, dbMessagesQueuePerUser } = require('../db-data');
 var { findThreadById } = require('./../persistence/findThreadById' );
