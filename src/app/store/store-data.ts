@@ -1,9 +1,15 @@
 import { Thread } from './../../../shared/model/thread';
 import { Participant } from "shared/model/participant";
-import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import { Message } from "./../../../shared/model/Message";
 
 export interface StoreData{
 	participant: { [key: number]: Participant },
-	threads: { [key: number]: Thread },
-	messages: {[ key: number ]: Message }
+	messages: {[ key: number ]: Message },
+	threads: { [key: number]: Thread }
+}
+
+export const INITIAL_STORE_DATA: StoreData = {
+	participant: {},
+	messages: {},
+	threads: {},
 }

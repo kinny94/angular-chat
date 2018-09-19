@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class MessageSectionComponent implements OnInit {
 
 	constructor( private store: Store<ApplicationState>) {
-		store.subscribe( state => console.log("message section received new state"));
+		store.subscribe( state => console.log( state ));
 	}
 
 	ngOnInit() {

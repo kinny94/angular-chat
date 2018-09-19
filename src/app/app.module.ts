@@ -9,6 +9,8 @@ import { UserSelectionComponent } from './user-selection/user-selection.componen
 import { ThreadSectionComponent } from './thread-section/thread-section.component';
 import { MessageSectionComponent } from './message-section/message-section.component';
 import { ThreadsService } from './services/threads.service';
+import { reducers } from './store/reducers';
+
 
 @NgModule({
 	declarations: [
@@ -21,7 +23,7 @@ import { ThreadsService } from './services/threads.service';
 		BrowserModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
-		StoreModule.forRoot({})
+		StoreModule.forRoot( reducers )
 	],
 	providers: [
 		ThreadsService

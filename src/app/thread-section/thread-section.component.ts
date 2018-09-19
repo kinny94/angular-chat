@@ -1,4 +1,4 @@
-import { LoadUserThreads } from './../store/actions';
+import { LoadUserThreadsActions } from './../store/actions';
 import { ApplicationState } from './../store/application-state';
 import { Component, OnInit } from '@angular/core';
 import { ThreadsService } from '../services/threads.service';
@@ -15,13 +15,15 @@ export class ThreadSectionComponent implements OnInit {
 		private threadsService: ThreadsService,
 		private store: Store<ApplicationState>
 	) {
-		store.subscribe( res =>  console.log( res ));
+		store.subscribe( state =>  console.log( state ));
 	}
 
 	ngOnInit() {
 		this.threadsService.loadUserThreads()
 		.subscribe(
-			allUserData => this.store.dispatch( new LoadUserThreads( allUserData ))
+			allUserData => {
+				this.store.dispatch( new LoadUserThreadsActions( allUserData ));
+			}
 		);
 	}
 }
