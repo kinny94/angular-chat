@@ -1,3 +1,4 @@
+import { MaterialModule } from './material-module';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,7 @@ import { reducers } from './store/reducers';
 		BrowserModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
+		MaterialModule,
 		StoreModule.forRoot( reducers )
 	],
 	providers: [

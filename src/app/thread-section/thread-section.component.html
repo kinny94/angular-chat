@@ -1,3 +1,19 @@
-<p>
-  thread-section works!
-</p>
+<div class="row">
+	<mat-form-field>
+		<mat-select placeholder="Select User">
+			<mat-option *ngFor="let food of foods" [value]="food.value">
+				{{food.viewValue}}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+</div>
+<div class="row">
+	<mat-drawer-container class="drawer-container">
+		<mat-drawer mode="side" opened>Thread Sectgion</mat-drawer>
+		<mat-drawer-content>
+			<app-user-selection></app-user-selection>
+			<app-message-section></app-message-section>
+		</mat-drawer-content>
+	</mat-drawer-container>
+
+</div>
