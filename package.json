@@ -7,8 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-	"e2e": "ng e2e",
-	"api-server": "./node_modules/.bin/ts-node ./src/server/server.ts",
+    "e2e": "ng e2e",
+    "api-server": "./node_modules/.bin/ts-node ./src/server/server.ts",
     "api-server:debug": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION ./src/server/server.ts"
   },
   "private": true,
@@ -38,6 +38,7 @@
     "firebase": "^5.5.0",
     "lodash": "^4.17.11",
     "ngrx-store-freeze": "^0.2.4",
+    "nodemon": "^1.18.4",
     "reselect": "^3.0.1",
     "rxjs": "^6.0.0",
     "uuid": "^3.3.2",
