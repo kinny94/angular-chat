@@ -1,7 +1,11 @@
 .full-height{
-	height: 85%;
+	flex: 1 1 auto;
+	position: relative;
 }
 
-.thread{
+.wrapper{
 	height: 100%;
+	flex-direction: column;
+	display: flex;
 }
+

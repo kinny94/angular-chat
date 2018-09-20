@@ -6,7 +6,7 @@
 				<mat-icon matBadge="{{ unreadMessages$ | async }}" matBadgeColor="warn">message</mat-icon>
 			</h4>
 		</div>
-		<div class="row">
+		<div>
 			<app-thread-list [threads]="threadSummaries$"></app-thread-list>
 		</div>
 	</mat-drawer>

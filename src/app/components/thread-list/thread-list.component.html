@@ -1,5 +1,6 @@
 <mat-list role="list">
 	<mat-list-item *ngFor="let thread of threads | async">
 		<p>{{ thread.participantName }}</p>
+		<mat-divider></mat-divider>
 	</mat-list-item>
 </mat-list>

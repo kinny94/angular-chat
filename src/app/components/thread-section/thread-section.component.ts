@@ -7,8 +7,7 @@ import { ThreadsService } from '../../services/threads.service';
 import { Store, select } from '@ngrx/store';
 
 
-import { mapStateToUsername, mapStateToUnreadMessages } from './thread_store_function';
-import { Thread } from 'shared/model/thread';
+import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries } from './thread_store_function';
 import * as _ from 'lodash';
 
 export interface State {
@@ -48,31 +47,6 @@ export class ThreadSectionComponent implements OnInit {
 
 		this.username$ = mapStateToUsername( this.store );
 		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
-
-		this.threadSummaries$ =  this.store.pipe(
-			filter( store => !!store.state ),
-			select(
-				store => {
-					let summaries: ThreadSummary[];
-					const threads = _.values<Thread>(store.state.storeData.threads);
-
-					threads.map( thread => {
-
-						const names = _.keys( thread.participants ).map(
-							participantId => store.state.storeData.participant[ participantId ].name
-						);
-
-						const lastMessageId = _.last( thread.messageIds );
-
-						summaries.push( {
-							id: thread.id,
-							participantName: _.join( names, "," ),
-							lastMessage: store.state.storeData.messages[ lastMessageId ].text
-						})
-					});
-					return summaries;
-				}
-			)
-		)
+		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );
 	}
 }

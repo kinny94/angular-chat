@@ -1,0 +1,8 @@
+mat-list{
+	width:90%;
+}
+
+.mat-list-item:hover{
+	background-color: #ccc;
+	scale: 1.2;
+}
