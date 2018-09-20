@@ -1,3 +1,5 @@
-<p>
-  thread-list works!
-</p>
+<mat-list role="list">
+	<mat-list-item *ngFor="let thread of threads | async">
+		<p>{{ thread.participantName }}</p>
+	</mat-list-item>
+</mat-list>
