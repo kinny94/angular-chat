@@ -6,11 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { UserSelectionComponent } from './user-selection/user-selection.component';
-import { ThreadSectionComponent } from './thread-section/thread-section.component';
-import { MessageSectionComponent } from './message-section/message-section.component';
+import { UserSelectionComponent } from './components/user-selection/user-selection.component';
+import { ThreadSectionComponent } from './components/thread-section/thread-section.component';
+import { MessageSectionComponent } from './components/message-section/message-section.component';
 import { ThreadsService } from './services/threads.service';
 import { reducers } from './store/reducers';
+import { ThreadListComponent } from './components/thread-list/thread-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { reducers } from './store/reducers';
 		AppComponent,
 		UserSelectionComponent,
 		ThreadSectionComponent,
-		MessageSectionComponent
+		MessageSectionComponent,
+		ThreadListComponent
 	],
 	imports: [
 		BrowserModule,

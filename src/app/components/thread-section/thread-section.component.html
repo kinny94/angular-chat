@@ -9,7 +9,12 @@
 </div>
 <div class="row">
 	<mat-drawer-container class="drawer-container">
-		<mat-drawer mode="side" opened>Thread Sectgion</mat-drawer>
+		<mat-drawer mode="side" opened>
+			<h4>Current user:
+				<strong>{{ username$ | async}} </strong>
+				<mat-icon matBadge="{{ unreadMessages$ | async }}" matBadgeColor="warn">message</mat-icon>
+			</h4>
+		</mat-drawer>
 		<mat-drawer-content>
 			<app-user-selection></app-user-selection>
 			<app-message-section></app-message-section>

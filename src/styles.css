@@ -2,6 +2,10 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+
 .chatapp {
     font-family: 'Muli', 'Helvetica Neue', helvetica, arial;
     max-width: 670px;
