@@ -1,0 +1,11 @@
+.participants{
+	text-align: center;
+	background-color: #596bca;
+	display:table-cell;
+    vertical-align:middle;
+}
+
+.names{
+	color: white;
+	padding-top: 5px;
+}

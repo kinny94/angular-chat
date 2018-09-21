@@ -15,6 +15,7 @@ import { ThreadListComponent } from './components/thread-list/thread-list.compon
 import { EffectsModule } from '@ngrx/effects';
 import { LoadThreadsEffectService } from './services/effects/load-threads-effect.service';
 import { StoreDevtoolsModule, StoreDevtools } from '@ngrx/store-devtools';
+import { MessageListComponent } from './components/message-list/message-list.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { StoreDevtoolsModule, StoreDevtools } from '@ngrx/store-devtools';
 		UserSelectionComponent,
 		ThreadSectionComponent,
 		MessageSectionComponent,
-		ThreadListComponent
+		ThreadListComponent,
+		MessageListComponent
 	],
 	imports: [
 		BrowserModule,
