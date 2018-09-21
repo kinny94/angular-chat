@@ -3,6 +3,7 @@ import { Action } from "@ngrx/store";
 
 export const USER_THREAD_ACTIONS_LOADED = 'USER_THREAD_ACTIONS_LOADED';
 export const LOAD_USER_THREADS_ACTION = 'LOAD_USER_THREADS_ACTION';
+export const THREAD_SELECTED_ACTION = 'THREAD_SELECTED_ACTION';
 
 export class UserThreadsLoadedActions implements Action{
 
@@ -16,4 +17,11 @@ export class LoadUserThreadActions implements Action{
 
 	readonly type = "LOAD_USER_THREADS_ACTION";
 
+}
+
+
+export class ThreadSelectedAction implements Action{
+
+	readonly type = "THREAD_SELECTED_ACTION";
+	constructor( public payload: number ){}
 }

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { LoadUserThreadActions } from './../../store/actions';
+import { LoadUserThreadActions, ThreadSelectedAction } from './../../store/actions';
 import { ApplicationState } from './../../store/application-state';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -40,5 +40,9 @@ export class ThreadSectionComponent implements OnInit {
 		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
 		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );
 
+	}
+
+	onThreadSelected( selectedThreadId: number ){
+		this.store.dispatch( new ThreadSelectedAction( selectedThreadId ))
 	}
 }

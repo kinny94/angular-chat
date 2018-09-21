@@ -7,7 +7,7 @@
 			</h4>
 		</div>
 		<div>
-			<app-thread-list [threads]="threadSummaries$"></app-thread-list>
+			<app-thread-list [threads]="threadSummaries$" (threadSelected)="onThreadSelected($event)" ></app-thread-list>
 		</div>
 	</mat-drawer>
 	<mat-drawer-content>
