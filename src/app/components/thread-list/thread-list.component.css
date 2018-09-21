@@ -4,5 +4,5 @@ mat-list{
 
 .mat-list-item:hover{
 	background-color: #ccc;
-	scale: 1.2;
+	cursor: pointer;
 }

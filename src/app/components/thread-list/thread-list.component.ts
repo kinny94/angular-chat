@@ -13,7 +13,6 @@ export class ThreadListComponent implements OnInit {
 
 
 	constructor() {
-		console.log( this.threads );
 	 }
 
 	ngOnInit() {
