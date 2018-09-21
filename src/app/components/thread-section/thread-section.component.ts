@@ -1,10 +1,8 @@
-import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LoadUserThreadsActions } from './../../store/actions';
+import { LoadUserThreadActions } from './../../store/actions';
 import { ApplicationState } from './../../store/application-state';
 import { Component, OnInit } from '@angular/core';
-import { ThreadsService } from '../../services/threads.service';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 
 import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries } from './thread_store_function';
@@ -32,21 +30,15 @@ export class ThreadSectionComponent implements OnInit {
 	threadSummaries$: Observable<ThreadSummary[]>;
 
 	constructor(
-		private threadsService: ThreadsService,
 		private store: Store<State>
 	) {}
 
 	ngOnInit() {
 
-		this.threadsService.loadUserThreads()
-		.subscribe(
-			allUserData => {
-				this.store.dispatch( new LoadUserThreadsActions( allUserData ));
-			}
-		);
-
+		this.store.dispatch( new LoadUserThreadActions());
 		this.username$ = mapStateToUsername( this.store );
 		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
 		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );
+
 	}
 }

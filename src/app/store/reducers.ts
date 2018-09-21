@@ -1,19 +1,19 @@
-import { LoadUserThreadsActions, LOAD_USER_THREADS_ACTION } from './actions';
+import { UserThreadsLoadedActions, USER_THREAD_ACTIONS_LOADED } from './actions';
 import { ApplicationState, INITITAL_APPLICATION_STATE } from './application-state';
 import { ActionReducerMap } from '@ngrx/store';
 import * as _ from 'lodash';
 
-export function storeReducer( state: ApplicationState, action: LoadUserThreadsActions ) : ApplicationState {
+export function storeReducer( state: ApplicationState, action: UserThreadsLoadedActions ) : ApplicationState {
 
 	switch( action.type ){
-		case LOAD_USER_THREADS_ACTION:
+		case USER_THREAD_ACTIONS_LOADED:
 			return handleLoadUserThreadsAction( state, action )
 		default:
 			return state;
 	}
 }
 
-function handleLoadUserThreadsAction( state: ApplicationState = INITITAL_APPLICATION_STATE, action: LoadUserThreadsActions ): ApplicationState {
+function handleLoadUserThreadsAction( state: ApplicationState = INITITAL_APPLICATION_STATE, action: UserThreadsLoadedActions ): ApplicationState {
 	const userData = action.payload;
 	const newState: ApplicationState = Object.assign({}, state );
 

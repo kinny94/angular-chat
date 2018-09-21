@@ -12,6 +12,9 @@ import { MessageSectionComponent } from './components/message-section/message-se
 import { ThreadsService } from './services/threads.service';
 import { reducers } from './store/reducers';
 import { ThreadListComponent } from './components/thread-list/thread-list.component';
+import { EffectsModule } from '@ngrx/effects';
+import { LoadThreadsEffectService } from './services/effects/load-threads-effect.service';
+import { StoreDevtoolsModule, StoreDevtools } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { ThreadListComponent } from './components/thread-list/thread-list.compon
 		BrowserAnimationsModule,
 		HttpClientModule,
 		MaterialModule,
-		StoreModule.forRoot( reducers )
+		EffectsModule.forRoot([LoadThreadsEffectService]),
+		StoreModule.forRoot( reducers ),
+		StoreDevtoolsModule.instrument()
 	],
 	providers: [
 		ThreadsService
