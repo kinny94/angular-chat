@@ -33,7 +33,6 @@ export class ThreadSectionComponent implements OnInit {
 
 	ngOnInit() {
 
-		this.store.dispatch( new LoadUserThreadActions());
 		this.username$ =  this.store.select( mapStateToUsername );
 		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
 		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );

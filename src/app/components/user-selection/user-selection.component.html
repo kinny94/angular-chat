@@ -1,9 +1,11 @@
 <div class="row">
 	<mat-form-field>
-		<mat-select placeholder="Select User">
-			<mat-option *ngFor="let food of foods" [value]="food.value">
-				{{food.viewValue}}
-			</mat-option>
+		<mat-select (selectionChange)="onSelectUser($event.value)" placeholder="Select User">
+			<mat-option value="1">Alice</mat-option>
+			<mat-option value="2">Bob</mat-option>
+			<mat-option value="3">Chuck</mat-option>
+			<mat-option value="4">David</mat-option>
+			<mat-option value="5">Erin</mat-option>
 		</mat-select>
 	</mat-form-field>
 </div>

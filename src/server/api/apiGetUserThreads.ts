@@ -11,8 +11,7 @@ module.exports = {
 	apiGetUserThreads : function(app:Application) {
 		app.route('/api/threads').get((req: Request, res: Response) => {
 
-			const participantId = 1;
-
+			const participantId = parseInt( req.headers['userid'] );
 			const threadsPerUser = findDbThreadsPerUser(participantId);
 
 			let messages: Message[] = [],
