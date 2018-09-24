@@ -1,8 +1,9 @@
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { LoadUserThreadActions, ThreadSelectedAction } from './../../store/actions';
 import { ApplicationState } from './../../store/application-state';
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 
 import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries } from './thread_store_function';
@@ -24,6 +25,7 @@ export class ThreadSectionComponent implements OnInit {
 	username$: Observable<string>;
 	unreadMessages$: Observable<number>;
 	threadSummaries$: Observable<ThreadSummary[]>;
+	currentSelectedThread: Observable<number>;
 
 	constructor(
 		private store: Store<ApplicationState>
@@ -35,7 +37,11 @@ export class ThreadSectionComponent implements OnInit {
 		this.username$ =  this.store.select( mapStateToUsername );
 		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
 		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );
-
+		this.store.pipe(
+			map( state => {
+				this.currentSelectedThread = of( state.uiState.currentThread );
+			})
+		).subscribe();
 	}
 
 	onThreadSelected( selectedThreadId: number ){

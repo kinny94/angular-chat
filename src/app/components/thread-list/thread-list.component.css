@@ -6,3 +6,7 @@ mat-list{
 	background-color: #ccc;
 	cursor: pointer;
 }
+
+.selected{
+	background-color: #596bca;
+}

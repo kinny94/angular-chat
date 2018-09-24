@@ -1,7 +1,7 @@
 import { buildThreadParticipantsList } from './../../../../shared/mapping/buildThreadParticipantsList';
 import { ApplicationState } from './../../store/application-state';
 
-export const messageParticipantNamesSelector = ( state: ApplicationState ): string => {
+export function messageParticipantNamesSelector( state: ApplicationState ): string{
 
 	const currentThreadId = state.uiState.currentThread;
 

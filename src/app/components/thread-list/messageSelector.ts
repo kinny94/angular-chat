@@ -1,6 +1,6 @@
-import { Message } from './../../../../shared/model/message';
-import { MessageVM } from './message-section.component';
-import { ApplicationState } from './../../store/application-state';
+import { Message } from 'shared/model/message';
+import { MessageVM } from '../message-section/message-section.component';
+import { ApplicationState } from '../../store/application-state';
 import * as _ from 'lodash';
 
 export function messageSelector( state: ApplicationState ): MessageVM[]{
