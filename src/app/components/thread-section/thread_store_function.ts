@@ -8,30 +8,25 @@ import { Thread } from 'shared/model/thread';
 import * as _ from 'lodash';
 
 
-export interface State {
-	state: ApplicationState
+
+export function mapStateToUsername( state: ApplicationState ) : string{
+	const currentUserId = state.uiState.userId,
+    currentParticipant = state.storeData.participant[currentUserId];
+
+    if (!currentParticipant) {
+        return "";
+    }
+
+    return currentParticipant.name;
 }
 
-
-export function mapStateToUsername( store: Store<State> ){
-	let username: Observable<string>;
-	username = store.pipe(
-		filter( store => !!store.state ),
-		map( store => {
-			return store.state.storeData.participant[ store.state.uiState.userId ].name;
-		})
-	)
-	return username;
-}
-
-
-export function mapStateToUnreadMessages( store: Store<State> ){
+export function mapStateToUnreadMessages( store: Store<ApplicationState> ){
 	let unreadMessages: Observable<number>;
 	unreadMessages = store.pipe(
-		filter( store => !!store.state ),
+		filter( store => !!store ),
 		map( store => {
-			let currentUserId = store.state.uiState.userId;
-			return _.values<Thread>( store.state.storeData.threads ).reduce(
+			let currentUserId = store.uiState.userId;
+			return _.values<Thread>( store.storeData.threads ).reduce(
 				( acc, thread ) => acc + thread.participants[ currentUserId ], 0);
 		})
 	)
@@ -39,19 +34,19 @@ export function mapStateToUnreadMessages( store: Store<State> ){
 }
 
 
-export function mapStatetoThreadSummaries( store : Store<State> ){
+export function mapStatetoThreadSummaries( store : Store<ApplicationState> ){
 	let threadSummaries: Observable<ThreadSummary[]>;
 	threadSummaries = store.pipe(
-		filter( store => !!store.state ),
+		filter( store => !!store ),
 		select(
 			store => {
 				let summaries: ThreadSummary[] = [];
-				const threads = _.values<Thread>(store.state.storeData.threads);
+				const threads = _.values<Thread>(store.storeData.threads);
 
 				threads.map( thread => {
 
 					const names = _.keys( thread.participants ).map(
-						participantId => store.state.storeData.participant[ participantId ].name
+						participantId => store.storeData.participant[ participantId ].name
 					);
 
 					const lastMessageId = _.last( thread.messageIds );
@@ -59,7 +54,7 @@ export function mapStatetoThreadSummaries( store : Store<State> ){
 					summaries.push( {
 						id: thread.id,
 						participantName: _.join( names, ", " ),
-						lastMessage: store.state.storeData.messages[ lastMessageId ].text
+						lastMessage: store.storeData.messages[ lastMessageId ].text
 					})
 				});
 				return summaries;
