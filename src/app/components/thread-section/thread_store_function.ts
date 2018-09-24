@@ -20,16 +20,15 @@ export function mapStateToUsername( state: ApplicationState ) : string{
     return currentParticipant.name;
 }
 
-export function mapStateToUnreadMessages( store: Store<ApplicationState> ){
-	let unreadMessages: Observable<number>;
-	unreadMessages = store.pipe(
-		filter( store => !!store ),
-		map( store => {
-			let currentUserId = store.uiState.userId;
-			return _.values<Thread>( store.storeData.threads ).reduce(
-				( acc, thread ) => acc + thread.participants[ currentUserId ], 0);
-		})
-	)
+export function mapStateToUnreadMessages( state: ApplicationState ) : number {
+	let unreadMessages: number = 0;
+	if( state ){
+		let currentUserId = state.uiState.userId;
+		unreadMessages =  _.values<Thread>( state.storeData.threads ).reduce(
+			( acc, thread ) => acc + (thread.participants[ currentUserId ] || 0), 0);
+			return unreadMessages;
+	}
+
 	return unreadMessages;
 }
 

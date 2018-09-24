@@ -8,5 +8,5 @@ mat-list{
 }
 
 .selected{
-	background-color: #596bca;
+	background-color: rgba(111, 169, 224, 0.38);
 }

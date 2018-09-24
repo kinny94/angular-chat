@@ -18,6 +18,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { INITITAL_APPLICATION_STATE } from './store/application-state';
 import { uiState } from './store/reducers/uiStateReducer';
 import { storeData } from './store/reducers/uiStoreReducer';
+import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 
 const reducers: ActionReducerMap<any> = {
 	uiState,
@@ -31,7 +32,8 @@ const reducers: ActionReducerMap<any> = {
 		ThreadSectionComponent,
 		MessageSectionComponent,
 		ThreadListComponent,
-		MessageListComponent
+		MessageListComponent,
+		ChatMessageComponent
 	],
 	imports: [
 		BrowserModule,

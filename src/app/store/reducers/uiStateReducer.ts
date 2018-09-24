@@ -19,5 +19,6 @@ export function uiState( state: UiState, action: any ) : UiState{
 const handleSelectUserAction = ( state: UiState, action: SelectUserAction) => {
 	const newState = { ...state };
 	newState.userId = action.payload;
+	newState.currentThread = undefined;
 	return newState
 }

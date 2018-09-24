@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 
-import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries } from './thread_store_function';
+import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries, test } from './thread_store_function';
 import * as _ from 'lodash';
 
 export interface ThreadSummary{
@@ -34,7 +34,7 @@ export class ThreadSectionComponent implements OnInit {
 	ngOnInit() {
 
 		this.username$ =  this.store.select( mapStateToUsername );
-		this.unreadMessages$ = mapStateToUnreadMessages( this.store );
+		this.unreadMessages$ = this.store.select( mapStateToUnreadMessages );
 		this.threadSummaries$ = mapStatetoThreadSummaries( this.store );
 		this.store.pipe(
 			map( state => {
