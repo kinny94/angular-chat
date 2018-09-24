@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 
-import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries, test } from './thread_store_function';
+import { mapStateToUsername, mapStateToUnreadMessages, mapStatetoThreadSummaries } from './thread_store_function';
 import * as _ from 'lodash';
 
 export interface ThreadSummary{
