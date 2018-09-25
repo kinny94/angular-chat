@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { messageSelector } from '../thread-list/messageSelector';
+import { SendNewMessageAction } from '../../store/actions';
 
 export interface MessageVM {
     id:number;
@@ -51,5 +52,8 @@ export class MessageSectionComponent implements OnInit {
 		this.store.subscribe( state => this.uiState = Object.assign({}, state.uiState ));
 	}
 
-
+	onNewMessage( input : any ){
+		this.store.dispatch( new SendNewMessageAction({ text: input.value, threadId: this.uiState.currentThread, participantId: this.uiState.userId }));
+		input.value = '';
+	}
 }

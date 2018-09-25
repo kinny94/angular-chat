@@ -12,11 +12,12 @@ mat-drawer-container{
 mat-drawer{
 	width: 20%;
 	height: 100%;
-	padding-left: 2%;
+	padding-left: 0%;
 	padding-top: 2%;
 	flex-grow: 1;
 }
 
 h4{
+	padding-left: 2%;
 	font-size: 1.1em
 }
