@@ -1,5 +1,4 @@
 import { Participant } from './../../../shared/model/participant';
-import { map } from 'rxjs/operators';
 import {Application,Request,Response} from 'express';
 import {AllUserData} from "../../../shared/transfer-object/all-user-data";
 import { Message } from "../../../shared/model/message";

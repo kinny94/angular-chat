@@ -19,9 +19,10 @@ export class ThreadsService {
 	}
 
 	saveNewMessage( payload: SendNewMessageActionPayload ): Observable<any>{
+
 		return this.http.post(
 			`/api/threads/${ payload.threadId }`,
-			JSON.stringify({ text: payload.text }),
+			{ text: payload.text },
 			this.commonHttpHeaders( payload.participantId )
 		)
 	}
