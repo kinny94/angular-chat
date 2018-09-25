@@ -19,6 +19,7 @@ import { INITITAL_APPLICATION_STATE } from './store/application-state';
 import { uiState } from './store/reducers/uiStateReducer';
 import { storeData } from './store/reducers/uiStoreReducer';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
+import { WriteNewMessageEffecService } from './services/effects/write-new-message-service';
 
 const reducers: ActionReducerMap<any> = {
 	uiState,
@@ -41,7 +42,7 @@ const reducers: ActionReducerMap<any> = {
 		HttpClientModule,
 		MaterialModule,
 		StoreModule.forRoot( reducers, { initialState: INITITAL_APPLICATION_STATE } ),
-		EffectsModule.forRoot([LoadThreadsEffectService]),
+		EffectsModule.forRoot([LoadThreadsEffectService, WriteNewMessageEffecService ]),
 		StoreDevtoolsModule.instrument()
 	],
 	providers: [

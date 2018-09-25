@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AllUserData } from './../../../shared/transfer-object/all-user-data';
+import { SendNewMessageActionPayload } from '../store/actions';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,9 +14,22 @@ export class ThreadsService {
 	constructor( private http: HttpClient) { }
 
 	loadUserThreads( userId: number ) : Observable<AllUserData>{
+
+		return this.http.get<AllUserData>( '/api/threads', this.commonHttpHeaders( userId ) );
+	}
+
+	saveNewMessage( payload: SendNewMessageActionPayload ): Observable<any>{
+		return this.http.post(
+			`/api/threads/${ payload.threadId }`,
+			JSON.stringify({ text: payload.text }),
+			this.commonHttpHeaders( payload.participantId )
+		)
+	}
+
+	commonHttpHeaders( userId: number ){
 		const headers = new HttpHeaders({
 			'userid':  userId.toString()
 		});
-		return this.http.get<AllUserData>( '/api/threads', { headers } );
+		return { headers };
 	}
 }
