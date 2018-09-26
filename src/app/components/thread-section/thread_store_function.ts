@@ -1,11 +1,9 @@
-import { ThreadSummary } from './thread-section.component';
-import { Store, select } from '@ngrx/store';
+import { ThreadSummaryVM } from './thread-summary.vm';
 import { ApplicationState } from './../../store/application-state';
-import { filter, map } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { Thread } from 'shared/model/thread';
 
 import * as _ from 'lodash';
+import { buildThreadParticipantsList } from 'shared/mapping/buildThreadParticipantsList';
 
 
 
@@ -33,32 +31,26 @@ export function mapStateToUnreadMessages( state: ApplicationState ) : number {
 }
 
 
-export function mapStatetoThreadSummaries( store : Store<ApplicationState> ){
-	let threadSummaries: Observable<ThreadSummary[]>;
-	threadSummaries = store.pipe(
-		filter( store => !!store ),
-		select(
-			store => {
-				let summaries: ThreadSummary[] = [];
-				const threads = _.values<Thread>(store.storeData.threads);
+const deepFreeze = require('deep-freeze-strict');
 
-				threads.map( thread => {
+export function stateToThreadSummariesSelector(state: ApplicationState):ThreadSummaryVM[] {
 
-					const names = _.keys( thread.participants ).map(
-						participantId => store.storeData.participant[ participantId ].name
-					);
+    const threads = _.values<Thread>(state.storeData.threads);
 
-					const lastMessageId = _.last( thread.messageIds );
+    return deepFreeze(threads.map(_.partial(mapThreadToThreadSummary, state)));
+}
 
-					summaries.push( {
-						id: thread.id,
-						participantName: _.join( names, ", " ),
-						lastMessage: store.storeData.messages[ lastMessageId ].text
-					})
-				});
-				return summaries;
-			}
-		)
-	)
-	return threadSummaries;
+
+function mapThreadToThreadSummary(state:ApplicationState, thread:Thread): ThreadSummaryVM {
+
+    const lastMessageId = _.last(thread.messageIds),
+        lastMessage = state.storeData.messages[lastMessageId];
+
+    return {
+        id: thread.id,
+        participantNames: buildThreadParticipantsList(state, thread),
+        lastMessageText: lastMessage.text,
+        timestamp: lastMessage.timestamp,
+        read: thread.id === state.uiState.currentThread || thread.participants[state.uiState.userId] === 0
+    }
 }

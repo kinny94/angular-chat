@@ -1,4 +1,4 @@
-import { ThreadSummary } from './../thread-section/thread-section.component';
+import { ThreadSummaryVM } from './../thread-section/thread-summary.vm';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ThreadListComponent implements OnInit {
 
 	@Input()
-	threads: ThreadSummary[];
+	threads: ThreadSummaryVM[];
 
 	@Input()
 	currentSelectedThread: number

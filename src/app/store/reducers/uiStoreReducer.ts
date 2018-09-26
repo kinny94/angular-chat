@@ -56,7 +56,7 @@ const handleNewMessagesReceivedAction = ( state: StoreData, action: NewMessagesR
         currentThreadId = action.payload.currentThreadId,
 		currentUserId = action.payload.currentUserId
 
-    newMessages.payload.forEach((message: Message ) => {
+    newMessages["payload"].forEach((message: Message ) => {
 
         newStoreState.messages[message.id] = message;
 
