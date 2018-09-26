@@ -1,3 +1,4 @@
+import { ServerNotificationEffectService } from './services/effects/server-notifications-effect.service';
 import { MaterialModule } from './material-module';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -42,7 +43,7 @@ const reducers: ActionReducerMap<any> = {
 		HttpClientModule,
 		MaterialModule,
 		StoreModule.forRoot( reducers, { initialState: INITITAL_APPLICATION_STATE } ),
-		EffectsModule.forRoot([LoadThreadsEffectService, WriteNewMessageEffecService ]),
+		EffectsModule.forRoot([LoadThreadsEffectService, WriteNewMessageEffecService, ServerNotificationEffectService ]),
 		StoreDevtoolsModule.instrument()
 	],
 	providers: [

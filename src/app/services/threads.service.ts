@@ -1,3 +1,4 @@
+import { Message } from 'shared/model/message';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -26,6 +27,10 @@ export class ThreadsService {
 			this.commonHttpHeaders( payload.participantId )
 		)
 	}
+
+	loadNewMessagesForUser(userId:number): Observable<Message[]> {
+        return this.http.post<Message[]>('/api/notifications/messages', null, this.commonHttpHeaders(userId));
+    }
 
 	commonHttpHeaders( userId: number ){
 		const headers = new HttpHeaders({
