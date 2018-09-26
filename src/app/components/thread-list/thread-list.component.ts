@@ -21,7 +21,6 @@ export class ThreadListComponent implements OnInit {
 	 }
 
 	ngOnInit() {
-		console.log( this.currentSelectedThread );
 	}
 
 	selectThread( threadId: number ){
