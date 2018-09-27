@@ -1,18 +1,24 @@
 {
   "name": "angular-chat",
   "version": "0.0.0",
+  "engines": {
+    "node": "6.11.0",
+    "npm": "3.10.10"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "npm run api-server",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "api-server": "./node_modules/.bin/ts-node ./src/server/server.ts",
-    "api-server:debug": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION ./src/server/server.ts"
+    "api-server:debug": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION ./src/server/server.ts",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
+    "typescript": "~2.7.2",
     "@angular/animations": "^6.1.7",
     "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.1.0",
@@ -55,6 +61,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.5",
     "codelyzer": "~4.2.1",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
