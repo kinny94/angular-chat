@@ -2995,6 +2995,12 @@
       "integrity": "sha1-QICG1AlVDCYxFVYZ6fp7ytw7mRs=",
       "dev": true
     },
+    "currently": {
+      "version": "0.0.8",
+      "resolved": "https://registry.npmjs.org/currently/-/currently-0.0.8.tgz",
+      "integrity": "sha1-MeB9CpDB4fpQrIB6guPYFlvXkw4=",
+      "dev": true
+    },
     "currently-unhandled": {
       "version": "0.4.1",
       "resolved": "https://registry.npmjs.org/currently-unhandled/-/currently-unhandled-0.4.1.tgz",
