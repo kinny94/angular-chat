@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "api-server": "./node_modules/.bin/ts-node ./src/server/server.ts",
     "api-server:debug": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION ./src/server/server.ts",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build"
   },
   "private": true,
   "dependencies": {
